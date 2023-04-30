@@ -1,3 +1,7 @@
+[![build](https://github.com/bcxpro/ebsnapshot/actions/workflows/build.yml/badge.svg)](https://github.com/bcxpro/ebsnapshot/actions/workflows/build.yml)
+[![tests](https://github.com/bcxpro/ebsnapshot/actions/workflows/code.yml/badge.svg)](https://github.com/bcxpro/ebsnapshot/actions/workflows/code.yml)
+[![Release][release-badge]][release]
+
 **_ebsnapshot_** is a tool that simplifies the process of backing up and restoring AWS EC2 EBS snapshots. With _ebsnapshot_, you can create backups of your snapshots and store them in Amazon S3 or in files on your local machine. Additionally, _ebsnapshot_ supports backup to Amazon Glacier, providing a cost-effective way to archive your data. _ebsnapshot_ also includes compression functionality to help reduce the storage space required for your backups.
 
 If you're looking to backup your snapshots for disaster recovery purposes or simply to archive your data, _ebsnapshot_ can help you.
@@ -169,3 +173,6 @@ To remove the possibility of reading or writing to S3 just remove the `S3ReadAcc
 ## Disclaimer
 
 :warning: _ebsnapshot_ is an experimental tool for backing up and restoring EBS snapshots to and from S3/files. While we have extensively tested the tool to ensure it functions as intended, it is important to note that there is no warranty provided with the software. Therefore, we cannot guarantee that you will not lose any data while using this tool. It is important to use _ebsnapshot_ at your own risk and to ensure that you have appropriate backups and contingency plans in place before using it to handle critical data.
+
+[release-badge]: https://img.shields.io/github/v/release/bcxpro/ebsnapshot?label=Release
+[release]: https://github.com/bcxpro/ebsnapshot/releases/latest
