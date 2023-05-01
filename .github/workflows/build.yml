@@ -6,8 +6,18 @@ name: Build
 on:
   push:
     branches: ["main", "dev"]
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - 'docs/**'
+      - '.github/*.md'
   pull_request:
     branches: ["main", "dev"]
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - 'docs/**'
+      - '.github/*.md'
 
 jobs:
   build:
