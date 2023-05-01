@@ -2,7 +2,9 @@
 [![tests](https://github.com/bcxpro/ebsnapshot/actions/workflows/code.yml/badge.svg)](https://github.com/bcxpro/ebsnapshot/actions/workflows/code.yml)
 [![Release][release-badge]][release]
 
-**_ebsnapshot_** is a tool that simplifies the process of backing up and restoring AWS EC2 EBS snapshots. With _ebsnapshot_, you can create backups of your snapshots and store them in Amazon S3 or in files on your local machine. Additionally, _ebsnapshot_ supports backup to Amazon Glacier, providing a cost-effective way to archive your data. _ebsnapshot_ also includes compression functionality to help reduce the storage space required for your backups.
+# ebsnapshot
+
+**_ebsnapshot_** is a tool that simplifies the process of backing up and restoring AWS EC2 EBS snapshots. With _ebsnapshot_, you can create backups of your snapshots and store them in Amazon S3 or in files on your local machine. Additionally, _ebsnapshot_ supports direct backup to Amazon Glacier, providing a cost-effective way to archive your data. _ebsnapshot_ also includes compression functionality to help reduce the storage space required for your backups.
 
 If you're looking to backup your snapshots for disaster recovery purposes or simply to archive your data, _ebsnapshot_ can help you.
 
@@ -12,14 +14,14 @@ _ebsnapshot_ [snapshot binary format](./docs/snapshot_format.md) is a proprietar
 
 _ebsnapshot_ is capable of creating these binary snapshots files, and restoring them by creating an EBS snapshot from a binary snapshot file that was previously backed up. This feature enables _ebsnapshot_ to provide faster and more cost-effective snapshot backups, as well as streamlined snapshot restores.
 
-Please note that _ebsnapshot_'s snapshot binary format is a proprietary format and can only be read and written by _ebsnapshot_. Other backup tools or services are not compatible with this format.
+Please note that _ebsnapshot_'s snapshot binary format, while open, is only implemented by _ebsnapshot_ and can only be read and written it. Other backup tools or services are not compatible with this format.
 
 ### Raw format
-_ebsnapshot_ is capable of creating backups of EBS snapshots in the raw disk binary format. This format represents a sector-by-sector copy of the EBS volume, including all data and metadata. It can be useful in scenarios where the original volume needs to be restored as an exact replica, such as in disaster recovery or forensic analysis.
+_ebsnapshot_ is also capable of creating backups of EBS snapshots in the raw disk image format. This format represents a sector-by-sector copy of the EBS volume.
 
 To create a backup in raw disk binary format, _ebsnapshot_ reads the EBS snapshot block-by-block and writes the content to a binary file. The resulting file has the same size as the original EBS volume, and can be used to restore the volume using various disk imaging tools.
 
-It's important to note that the raw disk binary format doesn't provide any compression or deduplication capabilities, which can result in larger backup sizes compared to other formats. Additionally, the format may not be suitable for backups of large volumes due to its size and potential limitations of the backup storage.
+It's important to note that the raw disk binary format doesn't provide any compression capabilities, which can result in larger backup sizes compared to other formats. Additionally, the format may not be suitable for backups of large volumes due to its size and potential limitations of the backup storage.
 
 In addition, _ebsnapshot_ can restore a raw binary disk file and create an EBS snapshot from it. This feature is particularly useful for converting existing disks in raw binary format to EBS snapshots, which can then be used to create EBS volumes.
 
